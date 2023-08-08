@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,13 +29,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.example.proyectofinal_v2.components.StarComponent
 import com.example.proyectofinal_v2.domain.model.CharacterModel
 
 @Composable
 fun ShowCharacterDetail(
     character: CharacterModel
 ) {
-    var starred by remember {
+    var starred by rememberSaveable {
         mutableStateOf(false)
     }
 
@@ -92,7 +94,7 @@ fun ShowCharacterDetail(
 
 @Composable
 fun AndroidViewTest(character: CharacterModel) {
-    var starred by remember {
+    var starred by rememberSaveable {
         mutableStateOf(false)
     }
     // Star

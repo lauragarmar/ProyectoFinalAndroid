@@ -1,5 +1,6 @@
 package com.example.proyectofinal_v2.presentation.detail
 
+import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Icon
@@ -16,7 +17,7 @@ import com.example.proyectofinal_v2.components.ShowError
 import com.example.proyectofinal_v2.navigation.Screen
 import org.koin.androidx.compose.koinViewModel
 
-//@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun CharacterDetailScreen(
     id: String,
