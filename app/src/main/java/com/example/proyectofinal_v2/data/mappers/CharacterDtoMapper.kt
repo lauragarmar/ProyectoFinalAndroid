@@ -13,8 +13,8 @@ fun CharacterDto.toCharacterModel(): CharacterModel? {
             type = type ?: "",
             gender = gender ?: "",
             image = image ?: "",
-            location = location.name,
-            origin= origin.name
+            location = location.name ?: "",
+            origin= origin.name ?: ""
         )
     } else {
        null
@@ -32,10 +32,10 @@ fun CharacterDto.toCharacterLocal() =
             type = type ?: "",
             gender = gender ?: "",
             image = image ?: "",
-            locationName = location.name,
-            originName= origin.name
+            locationName = location.name ?: "",
+            originName= origin.name ?: "",
+            favorite = favorite ?: false
         )
-//fav?
     } else {
         null
 
@@ -51,8 +51,8 @@ fun CharacterLocal.toCharacterModel() =
             type = type ?: "",
             gender = gender ?: "",
             image = image ?: "",
-            location= locationName,
-            origin = originName
+            location= locationName ?: "",
+            origin = originName ?: ""
         )
     } else {
         null

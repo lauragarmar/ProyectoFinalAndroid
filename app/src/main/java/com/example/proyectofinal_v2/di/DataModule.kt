@@ -52,7 +52,7 @@ val dataModule = module {
     single<LocalDataSource> { LocalDataSourceImpl(get()) }
 
     single<RickYMortyApi> {
-        getSuperHeroApi(get())
+        getRickYMortyApi(get())
     }
 
     single {
@@ -65,7 +65,7 @@ val dataModule = module {
 
 }
 
-private fun getSuperHeroApi(retrofit: Retrofit) =
+private fun getRickYMortyApi(retrofit: Retrofit) =
     retrofit.create(RickYMortyApi::class.java)
 
 private fun getDatabase(context: Context) : CharacterDatabase =

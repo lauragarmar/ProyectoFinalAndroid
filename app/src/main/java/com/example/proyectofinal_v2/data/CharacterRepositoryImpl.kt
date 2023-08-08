@@ -25,9 +25,16 @@ class CharacterRepositoryImpl(
               lo convierto a local y le hago un filtro de nulos*/
 
             val remoteData = remoteDataSource.getCharacterList()
-            localDataSource.insertCharacterList(remoteData.map { it.toCharacterLocal() }.filterNotNull())
+            localDataSource.insertCharacterList(remoteData.map { it.toCharacterLocal() }
+                .filterNotNull())
 
             return remoteData.map { it.toCharacterModel() }.filterNotNull()
         }
     }
+
+    override suspend fun getCharacterById(id: String): CharacterModel =
+
+        localDataSource.getCharacterById(id).toCharacterModel()!! //fuerzo tema nulos
+
+
 }

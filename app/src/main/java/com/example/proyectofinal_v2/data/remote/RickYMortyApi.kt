@@ -9,4 +9,6 @@ interface RickYMortyApi {
     @GET("character")
     suspend fun getCharacterList(): ResultsDto
 
+
+
 }

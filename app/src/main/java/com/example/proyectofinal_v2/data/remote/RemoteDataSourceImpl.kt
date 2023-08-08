@@ -7,7 +7,7 @@ class RemoteDataSourceImpl(
 ) : RemoteDataSource {
 
     override suspend fun getCharacterList(): List<CharacterDto> {
-        return rickYMortyApi.getCharacterList().results
+        return rickYMortyApi.getCharacterList().results!!
     }
 
 }

@@ -64,26 +64,8 @@ fun ShowCharacterList(
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
-                    Text(
-                        text = character.type,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    Text(
-                        text = character.status,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    Text(
-                        text = "Localizacion: ${character.location}" ,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    Text(
-                        text = "Orgigen: ${character.origin}",
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
+
+
                 }
             }
         }

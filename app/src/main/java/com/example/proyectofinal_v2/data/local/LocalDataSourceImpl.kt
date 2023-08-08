@@ -11,4 +11,7 @@ class LocalDataSourceImpl (
 
     override suspend fun insertCharacterList(characterList: List<CharacterLocal>) = characterDao.insertAll(characterList)
 
+    override suspend fun getCharacterById(id: String): CharacterLocal = characterDao.getCharacterById(id)
+
+
 }

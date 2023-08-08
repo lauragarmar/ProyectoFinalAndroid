@@ -13,5 +13,6 @@ data class CharacterLocal(
     @ColumnInfo (name = "gender") val gender: String,
     @ColumnInfo (name = "image") val image : String,
     @ColumnInfo (name= "location_name") val locationName : String,
-    @ColumnInfo (name = "origin_name") val originName : String
+    @ColumnInfo (name = "origin_name") val originName : String,
+    @ColumnInfo(name = "favorite") val favorite: Boolean
 )
