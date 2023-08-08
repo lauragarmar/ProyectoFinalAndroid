@@ -2,6 +2,7 @@ package com.example.proyectofinal_v2.presentation.list
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.TopAppBar
@@ -47,25 +48,30 @@ fun CharacterListScreen(
                 TopAppBar(
 
                     title = {
-                        Text("Menú",
-                        color= Color.Black)
-                    },
-                backgroundColor= Color.Gray,
-                    navigationIcon = {
-                        IconButton(onClick={}){
+                        Text(
+                            "Menú",
+                            color = Color.Black
+                        )
 
-                            Icon(imageVector= Icons.Filled.Star,
-                                contentDescription = "Favoritos"
+                        Row {
+                            IconButton(onClick = {}) {
+                                Icon(
+                                    imageVector = Icons.Filled.Star,
+                                    contentDescription = "Favoritos"
 
-                           )
+                                )
+                            }
                         }
-                    }
 
-                )
+                    },
+                    backgroundColor = Color.Gray,
+
+
+                    )
             }) {
             LazyColumn(
                 modifier = Modifier
-                    .padding(top= 50.dp)
+                    .padding(top = 50.dp)
                     .padding(vertical = 5.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
