@@ -66,7 +66,6 @@ fun CharacterListScreen(
                     },
                     backgroundColor = Color.Gray,
 
-
                     )
             }) {
             LazyColumn(

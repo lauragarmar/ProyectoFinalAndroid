@@ -10,16 +10,16 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
-class RickYMortyApplication  : Application(){
+class RickYMortyApplication : Application() {
 
-    override fun onCreate(){
+    override fun onCreate() {
         super.onCreate()
 
-        startKoin{
+        startKoin {
             androidLogger(
-                if(BuildConfig.DEBUG){
+                if (BuildConfig.DEBUG) {
                     Level.INFO
-                }else{
+                } else {
                     Level.NONE
                 }
             )
