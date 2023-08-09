@@ -27,7 +27,7 @@ class CharacterListViewModel (
         getData()
     }
 
-    private fun getData(){
+    fun getData(){
         viewModelScope.launch {
             try{
                 _errorMessage.value= null

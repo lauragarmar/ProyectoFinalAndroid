@@ -4,7 +4,6 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.example.proyectofinal_v2.presentation.detail.CharacterDetailScreen
-import com.example.proyectofinal_v2.presentation.favorites.FavoriteListScreen
 import com.example.proyectofinal_v2.presentation.list.CharacterListScreen
 
 fun NavGraphBuilder.addCharacterListScreen(navController: NavHostController) {
@@ -28,10 +27,3 @@ fun NavGraphBuilder.addCharacterDetailScreen(navController : NavHostController){
     }
 }
 
-fun NavGraphBuilder.addFavoriteListScreen(navController: NavHostController) {
-    composable(Screen.FavoriteListScreen.route) {
-        FavoriteListScreen {
-            navController.navigate("${Screen.CharacterListScreen.route}")
-        }
-    }
-}

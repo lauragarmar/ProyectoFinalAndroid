@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -50,12 +51,16 @@ fun CharacterListScreen(
                 TopAppBar(
 
                     title = {
-                        Text(
-                            "Menú",
-                            color = Color.Black
-                        )
-
                         Row {
+
+                            IconButton(
+                                modifier = Modifier.semantics {
+                                    contentDescription = "Botón atrás para volver al listado"
+                                },
+                                onClick = { characterListViewModel.getData() }
+                            ) {
+                                Icon(Icons.Filled.ArrowBack, "botón atrás")
+                            }
                             IconButton(onClick = {
                             characterListViewModel.getFavoriteData()
                             }) {
