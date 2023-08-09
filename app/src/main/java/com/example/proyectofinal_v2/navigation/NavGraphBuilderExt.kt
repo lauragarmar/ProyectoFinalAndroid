@@ -18,9 +18,10 @@ fun NavGraphBuilder.addCharacterDetailScreen(navController : NavHostController){
     composable(
         route = Screen.CharacterListScreen.route + "/{characterId}",
         arguments= Screen.CharacterListScreen.arguments
-    ){navBackStackEntry->
-        val id= navBackStackEntry.arguments?.getString("characterId") ?: ""
-        CharacterDetailScreen(id = id) {
+    ){ navBackStackEntry->
+        println("doing something here ${navBackStackEntry.arguments}")
+        val id: String = navBackStackEntry.arguments?.getString("characterId") ?: "0"
+        CharacterDetailScreen(id.toInt()) {
             navController.popBackStack()
         }
     }

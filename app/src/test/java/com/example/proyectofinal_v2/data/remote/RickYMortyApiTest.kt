@@ -1,8 +1,8 @@
 package com.example.proyectofinal_v2.data.remote
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.proyectofinal_v2.testutil.DefaultDispatcherRule
 import com.example.proyectofinal_v2.di.baseUrl
+import com.example.proyectofinal_v2.testutil.DefaultDispatcherRule
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -15,7 +15,6 @@ import org.junit.Before
 import org.junit.BeforeClass
 import org.junit.Rule
 import org.junit.Test
-import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 

@@ -49,6 +49,12 @@ class CharacterTestDataBuilder {
         return this
     }
 
+    fun withNumElements(numElements: Int): CharacterTestDataBuilder {
+        this.numElements = numElements
+
+        return this
+    }
+
     fun buildList() : List<CharacterModel>{
         val list = mutableListOf<CharacterModel>()
         for(i in 0 until numElements) {

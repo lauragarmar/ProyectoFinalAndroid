@@ -20,7 +20,7 @@ class DetailViewModel(
     private val _errorMessage = MutableLiveData <String?>()
     val errorMessage : LiveData <String?> get() = _errorMessage
 
-    fun getCharacter(id : String) = viewModelScope.launch {
+    fun getCharacter(id: Int) = viewModelScope.launch {
         try{
             val result = withContext(Dispatchers.IO){
                 getDetailUseCase.invoke(id)

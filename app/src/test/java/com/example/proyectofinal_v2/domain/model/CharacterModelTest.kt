@@ -1,8 +1,6 @@
 package com.example.proyectofinal_v2.domain.model
 
 import com.example.proyectofinal_v2.CharacterTestDataBuilder
-import com.example.proyectofinal_v2.data.remote.dto.LocationDto
-import com.example.proyectofinal_v2.data.remote.dto.OriginDto
 import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert
 import org.junit.Test

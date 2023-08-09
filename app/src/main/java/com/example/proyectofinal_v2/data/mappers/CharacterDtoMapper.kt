@@ -7,7 +7,7 @@ import com.example.proyectofinal_v2.domain.model.CharacterModel
 fun CharacterDto.toCharacterModel(): CharacterModel? {
   return if (id != null) {
         CharacterModel(
-            id = this.id,
+            id = id,
             name = name ?: "",
             status = status ?: "",
             type = type ?: "",
@@ -18,7 +18,6 @@ fun CharacterDto.toCharacterModel(): CharacterModel? {
         )
     } else {
        null
-
     }
 }
 
@@ -26,7 +25,7 @@ fun CharacterDto.toCharacterModel(): CharacterModel? {
 fun CharacterDto.toCharacterLocal() =
     if (id != null) {
         CharacterLocal(
-            id = this.id,
+            id = id,
             name = name ?: "",
             status = status ?: "",
             type = type ?: "",
@@ -38,23 +37,17 @@ fun CharacterDto.toCharacterLocal() =
         )
     } else {
         null
-
     }
 
 
 fun CharacterLocal.toCharacterModel() =
-    if (id != null) {
-        CharacterModel(
-            id = this.id,
-            name = name ?: "",
-            status = status ?: "",
-            type = type ?: "",
-            gender = gender ?: "",
-            image = image ?: "",
-            location= locationName ?: "",
-            origin = originName ?: ""
-        )
-    } else {
-        null
-
-    }
+    CharacterModel(
+        id = id,
+        name = name ?: "",
+        status = status ?: "",
+        type = type ?: "",
+        gender = gender ?: "",
+        image = image ?: "",
+        location= locationName ?: "",
+        origin = originName?: ""
+    )

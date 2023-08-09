@@ -16,25 +16,22 @@ class CharacterRepositoryImpl(
 
         val localData = localDataSource.getCharacterList()
 
-        if (localData.isNotEmpty()) {
-            return localData.map { it?.toCharacterModel() }.filterNotNull()
+        return if (localData.isNotEmpty()) {
+            localData.map { it.toCharacterModel() }
         } else {
             /*Si está vacía,obtengo los datos de la Api que me vienen de
-             remotedatasource y consigo la lista
-              Después inserto la lista de caracteres a la localdatasource, lo recorro,
-              lo convierto a local y le hago un filtro de nulos*/
+                 remotedatasource y consigo la lista
+                  Después inserto la lista de caracteres a la localdatasource, lo recorro,
+                  lo convierto a local y le hago un filtro de nulos*/
 
             val remoteData = remoteDataSource.getCharacterList()
-            localDataSource.insertCharacterList(remoteData.map { it.toCharacterLocal() }
-                .filterNotNull())
+            localDataSource.insertCharacterList(remoteData.mapNotNull { it.toCharacterLocal() })
 
-            return remoteData.map { it.toCharacterModel() }.filterNotNull()
+            remoteData.mapNotNull { it.toCharacterModel() }
         }
     }
 
-    override suspend fun getCharacterById(id: String): CharacterModel =
-
-        localDataSource.getCharacterById(id).toCharacterModel()!! //fuerzo tema nulos
-
-
+    override suspend fun getCharacterById(id: Int): CharacterModel {
+        return localDataSource.getCharacterById(id).toCharacterModel()
+    }
 }

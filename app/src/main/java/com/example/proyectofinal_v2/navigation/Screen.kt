@@ -18,7 +18,7 @@ sealed class Screen(
         route = "characterDetail",
         arguments= listOf(
             navArgument("characterId"){
-                type= NavType.StringType
+                type= NavType.IntType
                 nullable= false
             }
         )
