@@ -1,4 +1,4 @@
-package com.example.proyectofinal_v2.presentation.list
+package com.example.proyectofinal_v2.presentation.favorites
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Row
@@ -22,16 +22,17 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.example.proyectofinal_v2.components.ShowError
 import com.example.proyectofinal_v2.domain.model.CharacterModel
+import com.example.proyectofinal_v2.presentation.list.CharacterListViewModel
+import com.example.proyectofinal_v2.presentation.list.ShowCharacterList
 import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CharacterListScreen(
+fun FavoriteListScreen(
     characterListViewModel: CharacterListViewModel = koinViewModel(),
     onItemClick: (Int) -> Unit,
-
-    ) {
+) {
     val state = characterListViewModel.characterList.observeAsState()
 
     val errorState = characterListViewModel.errorMessage.observeAsState()
@@ -40,9 +41,8 @@ fun CharacterListScreen(
         val error = errorState.value
         ShowError(error = error ?: "")
     }
+
     val result: List<CharacterModel>? = state.value
-
-
 
     if (result != null) {
         Scaffold(
@@ -56,11 +56,9 @@ fun CharacterListScreen(
                         )
 
                         Row {
-                            IconButton(onClick = {
-                            characterListViewModel.getFavoriteData()
-                            }) {
+                            IconButton(onClick = {}) {
                                 Icon(
-                                    modifier=Modifier.semantics
+                                    modifier = Modifier.semantics
                                     { contentDescription = "Icono de favoritos" },
                                     imageVector = Icons.Filled.Star,
                                     contentDescription = "Favoritos"
@@ -77,8 +75,7 @@ fun CharacterListScreen(
             LazyColumn(
                 modifier = Modifier
                     .padding(top = 50.dp)
-                    .padding(vertical = 5.dp)
-                    ,
+                    .padding(vertical = 5.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 val characterList = state.value
@@ -96,8 +93,6 @@ fun CharacterListScreen(
         }
     } else {
 
-        //hasta que tenga datos
         ShowError(error = "Cargando")
     }
-
 }

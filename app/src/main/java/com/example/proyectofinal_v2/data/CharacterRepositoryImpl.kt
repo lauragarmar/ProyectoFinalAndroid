@@ -1,6 +1,7 @@
 package com.example.proyectofinal_v2.data
 
 import com.example.proyectofinal_v2.data.local.LocalDataSource
+import com.example.proyectofinal_v2.data.local.model.CharacterLocal
 import com.example.proyectofinal_v2.data.mappers.toCharacterLocal
 import com.example.proyectofinal_v2.data.mappers.toCharacterModel
 import com.example.proyectofinal_v2.data.remote.RemoteDataSource
@@ -33,5 +34,13 @@ class CharacterRepositoryImpl(
 
     override suspend fun getCharacterById(id: Int): CharacterModel {
         return localDataSource.getCharacterById(id).toCharacterModel()
+    }
+
+    override suspend fun getCharacterByFavorites(favorite: Boolean): List<CharacterModel> {
+        return localDataSource.getCharacterByFavorites(favorite = favorite).mapNotNull { it.toCharacterModel() }
+    }
+
+    override suspend fun setFavorite(id: Int, favorite: Boolean) {
+        localDataSource.setFavorite(id, favorite)
     }
 }

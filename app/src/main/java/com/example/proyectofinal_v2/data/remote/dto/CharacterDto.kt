@@ -10,7 +10,6 @@ data class CharacterDto (
     @Json (name = "gender") val gender : String?,
     @Json (name = "image") val image : String?,
     @Json (name= "location") val location : LocationDto,
-    @Json(name = "origin") val origin : OriginDto,
-    @Json (name ="favorite") val favorite: Boolean?
+    @Json(name = "origin") val origin : OriginDto
     )
 

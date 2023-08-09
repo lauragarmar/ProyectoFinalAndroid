@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+//creo las columnas con los datos que quiero almacenar localmente
 @Entity(tableName = "CharacterTable")
 data class CharacterLocal(
     @PrimaryKey @ColumnInfo(name = "id") val id: Int,

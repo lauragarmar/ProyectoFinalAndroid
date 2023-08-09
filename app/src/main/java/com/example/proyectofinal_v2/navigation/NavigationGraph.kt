@@ -11,5 +11,6 @@ fun NavigationGraph(){
     NavHost(navController = navController, startDestination = Screen.CharacterListScreen.route ){
         addCharacterListScreen(navController)
         addCharacterDetailScreen(navController)
+        addFavoriteListScreen(navController)
     }
 }

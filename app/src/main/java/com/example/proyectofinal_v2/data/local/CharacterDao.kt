@@ -6,6 +6,9 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.proyectofinal_v2.data.local.model.CharacterLocal
 
+//Room
+// interfaz común entre la aplicación y bbdd
+//interfaz con consultas a la base de datos
 @Dao
 interface CharacterDao {
     @Query("SELECT * FROM CharacterTable")
@@ -13,6 +16,13 @@ interface CharacterDao {
 
     @Query("SELECT * FROM CharacterTable WHERE id=:id")
     suspend fun getCharacterById(id: Int) :CharacterLocal
+
+//Esto de abajo ya no lo uso!
+    @Query("SELECT * FROM CharacterTable WHERE favorite= :favorite")
+    suspend fun getCharacterByFavorites(favorite: Boolean):List<CharacterLocal>
+
+    @Query("UPDATE CharacterTable SET favorite = :favorite WHERE id = :id")
+    suspend fun setFavorite(id: Int, favorite: Boolean)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(list: List<CharacterLocal>)

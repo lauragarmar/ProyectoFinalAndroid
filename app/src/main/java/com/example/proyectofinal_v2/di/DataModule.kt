@@ -22,14 +22,16 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 val baseUrl = "https://rickandmortyapi.com/api/"
 
 val dataModule = module {
-
+//single - de patrón singleton (una única instancia por clase)
     single {
+        //petición
+
         OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT).apply {
                 level = HttpLoggingInterceptor.Level.BODY
             }).build()
     }
-
+//configuración llamada a la api - retrofit
     single<Retrofit> {
         Retrofit.Builder()
             .baseUrl(baseUrl)
@@ -37,7 +39,7 @@ val dataModule = module {
             .addConverterFactory(MoshiConverterFactory.create(get()))
             .build()
     }
-
+//Moshi - parsear json a kotlin
     single<Moshi> {
         Moshi.Builder()
             .addLast(KotlinJsonAdapterFactory())

@@ -1,6 +1,5 @@
-package com.example.proyectofinal_v2.presentation.list
+package com.example.proyectofinal_v2.presentation.favorites
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,10 +16,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -29,16 +25,11 @@ import coil.request.ImageRequest
 import com.example.proyectofinal_v2.components.StarComponent
 import com.example.proyectofinal_v2.domain.model.CharacterModel
 
-
 @Composable
-fun ShowCharacterList(
-    characterListViewModel: CharacterListViewModel,
+fun ShowFavoritesList(
     character: CharacterModel,
     onClick : () -> Unit
 ) {
-    var starred by rememberSaveable {
-        mutableStateOf(false)
-    }
 
     Card(
         modifier = Modifier.padding(10.dp),
@@ -76,29 +67,6 @@ fun ShowCharacterList(
                         overflow = TextOverflow.Ellipsis
                     )
                 }
-
-
-                // Star
-                AndroidView(
-                    modifier = Modifier
-                        //.background(if (starred) Color.DarkGray else Color.LightGray)
-                        .clickable {
-                        val newState = !starred
-                        starred = newState
-                            characterListViewModel.fav(character.id, starred)
-                    }
-                        .size(48.dp),
-
-                    factory = { context ->
-                        StarComponent(context).apply {
-                            this.checked = starred
-                        }
-                    },
-                    update = {
-                        it.checked = starred
-                    }
-                )
-
 
             }
         }

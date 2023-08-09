@@ -8,5 +8,6 @@ data class CharacterModel(
     val gender: String,
     val image : String,
     val location: String,
-    val origin : String
+    val origin : String,
+    val favorite : Boolean
 )

@@ -67,7 +67,8 @@ class CharacterTestDataBuilder {
                     gender= gender,
                     image = image,
                     location= location,
-                    origin = origin
+                    origin = origin,
+                    favorite = true
 
                 )
             )
@@ -84,7 +85,8 @@ class CharacterTestDataBuilder {
         gender= gender,
         image = image,
         location= location,
-        origin = origin
+        origin = origin,
+        favorite = true
     )
 
 }
