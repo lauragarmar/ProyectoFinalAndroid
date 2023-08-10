@@ -1,5 +1,6 @@
 package com.example.proyectofinal_v2.presentation.list
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -30,11 +31,12 @@ import com.example.proyectofinal_v2.components.StarComponent
 import com.example.proyectofinal_v2.domain.model.CharacterModel
 
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun ShowCharacterList(
     characterListViewModel: CharacterListViewModel,
     character: CharacterModel,
-    onClick : () -> Unit
+    onClick: () -> Unit
 ) {
     var starred by rememberSaveable {
         mutableStateOf(false)
@@ -45,13 +47,16 @@ fun ShowCharacterList(
 
         shape = RoundedCornerShape(10.dp)
     ) {
-        Row(
-            modifier = Modifier.padding(10.dp).fillMaxWidth().clickable { onClick.invoke() },
-            verticalAlignment = Alignment.CenterVertically
+        Column(
+            modifier = Modifier
+                .padding(15.dp)
+                .fillMaxWidth()
+                .clickable { onClick.invoke() },
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Row( //nombre
+            Column( //nombre
                 modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 AsyncImage(
                     modifier = Modifier
@@ -60,33 +65,31 @@ fun ShowCharacterList(
                         .data(character.image)
                         .build(), contentDescription = "Imagen del personaje"
                 )
-                Column(
-                    modifier = Modifier.weight(1f),
-                    horizontalAlignment = Alignment.CenterHorizontally
+               Column(
+                    modifier = Modifier.weight(1f)
+                        .padding(top=10.dp),
+
+                   horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
                         text = character.name,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.size(10.dp)
                         //modifier= Modifier.semantics { contentDescription = character.name }
                     )
-                    Text(
-                        text = character.gender,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
 
+                }
 
                 // Star
                 AndroidView(
                     modifier = Modifier
                         //.background(if (starred) Color.DarkGray else Color.LightGray)
                         .clickable {
-                        val newState = !starred
-                        starred = newState
+                            val newState = !starred
+                            starred = newState
                             characterListViewModel.fav(character.id, starred)
-                    }
+                        }
                         .size(48.dp),
 
                     factory = { context ->
