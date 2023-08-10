@@ -6,6 +6,7 @@ import com.example.proyectofinal_v2.data.remote.dto.OriginDto
 import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert
 import org.junit.Test
+import org.junit.Assert.*
 
 class CharacterDtoMapperTest {
     class CharacterDtoMapperTest {
@@ -15,42 +16,34 @@ class CharacterDtoMapperTest {
             val locationDto = LocationDto("test name")
             val characterDto = CharacterDto(
                 id = 1,
-
                 name = "Sample Name",
                 status = "sample status",
                 type = "sample type",
                 gender = "sample gender",
                 image = "photo-url",
                 location = locationDto,
-                origin = OriginDto("origin name"),
-                favorite = false
+                origin = OriginDto("origin name")
             )
             val res = characterDto.toCharacterModel()
 
-            if (res != null) {
-                MatcherAssert.assertThat(res.id, CoreMatchers.`is`(1))
-            }
+            MatcherAssert.assertThat(res!!.id, CoreMatchers.`is`(1))
         }
 
         @Test
         fun `WHEN toCharacterModel with null EXPECT empty string`() {
             val characterDto = CharacterDto(
-                id = 1,
-
+                id = null,
                 name = "Sample Name",
                 status = "sample status",
                 type = "sample type",
                 gender = "sample gender",
                 image = "photo-url",
                 location = LocationDto("location name"),
-                origin = OriginDto("origin name"),
-                favorite = false
+                origin = OriginDto("origin name")
             )
             val res = characterDto.toCharacterModel()
 
-            if (res != null) {
-                MatcherAssert.assertThat(res.id, CoreMatchers.`is`(1))
-            }
+            assertNull(res)
         }
     }
 }

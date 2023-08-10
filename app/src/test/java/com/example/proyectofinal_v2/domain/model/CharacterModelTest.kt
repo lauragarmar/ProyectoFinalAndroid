@@ -26,7 +26,8 @@ class CharacterModelTest {
         "gender",
         "https://image",
         "location",
-        "origin"
+        "origin",
+        false
     )
 
     @Test

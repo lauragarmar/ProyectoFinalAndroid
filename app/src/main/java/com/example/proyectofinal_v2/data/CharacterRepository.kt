@@ -7,7 +7,7 @@ interface CharacterRepository {
 
     suspend fun getCharacterList(): List<CharacterModel>
 
-    suspend fun getCharacterById(id: Int): CharacterModel
+    suspend fun getCharacterById(id: Int): CharacterModel?
 
     suspend fun getCharacterByFavorites(favorite: Boolean) : List<CharacterModel>
     suspend fun setFavorite(id: Int, favorite: Boolean) : Unit

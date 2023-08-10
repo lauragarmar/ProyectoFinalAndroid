@@ -80,6 +80,6 @@ val locationDto = LocationDto("test name")
 val originDto = OriginDto("test name")
 fun getListRemote() = listOf<CharacterDto>(
 
-    CharacterDto(1, "name", "status", "type", "gender", "image", locationDto, originDto, true),
-    CharacterDto(2, "name", "status", "type", "gender", "image", locationDto, originDto, true)
+    CharacterDto(1, "name", "status", "type", "gender", "image", locationDto, originDto),
+    CharacterDto(2, "name", "status", "type", "gender", "image", locationDto, originDto)
 )
