@@ -71,20 +71,26 @@ fun ShowCharacterDetail(
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
+                    text = character.gender,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
                     text = character.status,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "Localizacion: ${character.location}" ,
+                    text = "Localization: ${character.location}" ,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "Origen: ${character.origin}",
+                    text = "Origin: ${character.origin}",
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
+
             }
         }
 

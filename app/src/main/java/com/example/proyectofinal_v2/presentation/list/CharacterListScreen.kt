@@ -1,10 +1,16 @@
 package com.example.proyectofinal_v2.presentation.list
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalTextStyle
@@ -64,8 +70,8 @@ fun CharacterListScreen(
                         IconButton(onClick = { characterListViewModel.getData() },
                             modifier = Modifier
                                 .semantics {
-                                contentDescription = "Botón atrás para volver al listado"
-                            }
+                                    contentDescription = "Botón atrás para volver al listado"
+                                }
 
                         ) {
                             Icon(Icons.Filled.ArrowBack, "Flecha atrás")
@@ -98,11 +104,11 @@ fun CharacterListScreen(
 
             },
         ) {
-            LazyColumn(
-                modifier = Modifier
-                    .padding(top = 50.dp)
-                    .padding(vertical = 5.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                modifier = Modifier.padding(top= 70.dp)
             ) {
                 val characterList = state.value
                 items(characterList?.size ?: 0) { i ->
