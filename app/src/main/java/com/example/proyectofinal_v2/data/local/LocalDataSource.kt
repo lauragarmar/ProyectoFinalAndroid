@@ -13,4 +13,6 @@ interface LocalDataSource {
 
     suspend fun setFavorite(id: Int, favorite: Boolean)
 
+    //suspend fun getCharacterByName(name : String) : List<CharacterLocal>
+
 }

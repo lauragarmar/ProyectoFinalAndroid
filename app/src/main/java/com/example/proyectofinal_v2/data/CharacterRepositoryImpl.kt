@@ -1,7 +1,6 @@
 package com.example.proyectofinal_v2.data
 
 import com.example.proyectofinal_v2.data.local.LocalDataSource
-import com.example.proyectofinal_v2.data.local.model.CharacterLocal
 import com.example.proyectofinal_v2.data.mappers.toCharacterLocal
 import com.example.proyectofinal_v2.data.mappers.toCharacterModel
 import com.example.proyectofinal_v2.data.remote.RemoteDataSource
@@ -43,4 +42,19 @@ class CharacterRepositoryImpl(
     override suspend fun setFavorite(id: Int, favorite: Boolean) {
         localDataSource.setFavorite(id, favorite)
     }
+
+ /*   override suspend fun searchCharacter(name: String): List<CharacterModel> {
+
+        val localData= localDataSource.getCharacterByName(name)
+
+        return if (localData.isNotEmpty()) {
+            localData.map { it.toCharacterModel() }
+        } else {
+
+            val remoteData = remoteDataSource.getCharacterByName(name)
+            remoteData.mapNotNull { it.toCharacterModel() }
+        }
+    }*/
+
+
 }

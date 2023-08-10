@@ -17,7 +17,9 @@ interface CharacterDao {
     @Query("SELECT * FROM CharacterTable WHERE id=:id")
     suspend fun getCharacterById(id: Int) :CharacterLocal
 
-//Esto de abajo ya no lo uso!
+    @Query("SELECT * FROM CharacterTable WHERE name like :name")
+    suspend fun getCharacterByName(name: String) : List<CharacterLocal>
+
     @Query("SELECT * FROM CharacterTable WHERE favorite= :favorite")
     suspend fun getCharacterByFavorites(favorite: Boolean):List<CharacterLocal>
 

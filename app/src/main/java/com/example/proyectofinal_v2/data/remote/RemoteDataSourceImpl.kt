@@ -22,4 +22,19 @@ class RemoteDataSourceImpl(
         }
     }
 
+   /* override suspend fun getCharacterByName(name: String): List<CharacterDto> {
+        return try {
+            val result = rickYMortyApi.getCharacterByName(name).results
+            if(result != null)
+                result
+            else {
+                Log.w("", "Not recovering data")
+                emptyList()
+            }
+        } catch (ex: Exception) {
+            Log.e("","Error requesting data $ex" )
+            emptyList()
+        }
+    }*/
+
 }

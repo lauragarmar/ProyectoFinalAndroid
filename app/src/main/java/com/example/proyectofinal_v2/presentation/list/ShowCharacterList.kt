@@ -39,7 +39,7 @@ fun ShowCharacterList(
     onClick: () -> Unit
 ) {
     var starred by rememberSaveable {
-        mutableStateOf(false)
+        mutableStateOf(character.favorite)
     }
 
     Card(

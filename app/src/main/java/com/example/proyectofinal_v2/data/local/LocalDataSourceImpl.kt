@@ -21,4 +21,8 @@ class LocalDataSourceImpl (
         characterDao.setFavorite(id= id, favorite = favorite)
     }
 
+    /*override suspend fun getCharacterByName(name: String) : List<CharacterLocal>{
+       return  characterDao.getCharacterByName(name)
+    }*/
+
 }

@@ -11,5 +11,6 @@ interface CharacterRepository {
 
     suspend fun getCharacterByFavorites(favorite: Boolean) : List<CharacterModel>
     suspend fun setFavorite(id: Int, favorite: Boolean) : Unit
+    //suspend fun searchCharacter(name: String): List<CharacterModel>
 
 }
