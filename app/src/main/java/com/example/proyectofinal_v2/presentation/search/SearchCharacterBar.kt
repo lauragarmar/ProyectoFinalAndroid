@@ -24,9 +24,9 @@ fun SearchCharacterBar(
     onValueChange: (String) -> Unit,
     onSearchExecute: () -> Unit
 ) {
-    Box(modifier = Modifier.padding(16.dp).background(color = Color.Black)) {
-        val searchIcon = @Composable { Icon(Icons.Default.Search, contentDescription = "Icono de búsqueda", tint = PrimaryGreen,) }
-        val placeHolderText = @Composable { Text(text = "Buscar...", color = PrimaryGreen) }
+    Box(modifier = Modifier.padding(16.dp).background(color = Color.LightGray)) {
+        val searchIcon = @Composable { Icon(Icons.Default.Search, contentDescription = "Icono de búsqueda", tint = Color.Black,) }
+        val placeHolderText = @Composable { Text(text = "Buscar...", color = Color.Black) }
         TextField(
             value = value,
             onValueChange = onValueChange,
@@ -35,7 +35,7 @@ fun SearchCharacterBar(
             keyboardActions = KeyboardActions(),
             placeholder = placeHolderText,
             colors = TextFieldDefaults.textFieldColors(
-                textColor = PrimaryGreen
+                textColor = Color.Black
             )
         )
     }
