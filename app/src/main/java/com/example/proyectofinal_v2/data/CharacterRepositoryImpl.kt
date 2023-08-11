@@ -1,7 +1,6 @@
 package com.example.proyectofinal_v2.data
 
 import com.example.proyectofinal_v2.data.local.LocalDataSource
-import com.example.proyectofinal_v2.data.local.model.CharacterLocal
 import com.example.proyectofinal_v2.data.mappers.toCharacterLocal
 import com.example.proyectofinal_v2.data.mappers.toCharacterModel
 import com.example.proyectofinal_v2.data.remote.RemoteDataSource
