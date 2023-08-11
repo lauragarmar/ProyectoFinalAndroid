@@ -7,5 +7,5 @@ class GetDetailUseCase (
     private val characterRepository : CharacterRepository
         ) {
 
-    suspend fun invoke (id: Int) : CharacterModel = characterRepository.getCharacterById(id)
+    suspend fun invoke (id: Int) : CharacterModel? = characterRepository.getCharacterById(id)
 }

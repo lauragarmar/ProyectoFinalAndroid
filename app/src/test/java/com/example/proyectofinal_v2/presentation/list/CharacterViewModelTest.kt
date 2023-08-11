@@ -3,6 +3,8 @@ package com.example.proyectofinal_v2.presentation.list
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.proyectofinal_v2.CharacterTestDataBuilder
 import com.example.proyectofinal_v2.domain.usecase.GetCharacterListUseCase
+import com.example.proyectofinal_v2.domain.usecase.GetFavoritesUseCase
+import com.example.proyectofinal_v2.domain.usecase.SetFavoritesUseCase
 import com.example.proyectofinal_v2.testutil.DefaultDispatcherRule
 import com.example.proyectofinal_v2.testutil.getOrAwaitValue
 import io.mockk.MockKAnnotations
@@ -27,6 +29,12 @@ class HeroListViewModelTest {
     @MockK(relaxed = true)
     private lateinit var getCharacterListUseCase: GetCharacterListUseCase
 
+    @MockK(relaxed = true)
+    private lateinit var getFavoritesUseCase: GetFavoritesUseCase
+
+    @MockK(relaxed = true)
+    private lateinit var setFavoritesUseCase: SetFavoritesUseCase
+
     @Before
     fun setup() {
         MockKAnnotations.init(this)
@@ -43,7 +51,9 @@ class HeroListViewModelTest {
             .withNumElements(20)
             .buildList()
 
-        val viewModel = CharacterListViewModel(getCharacterListUseCase)
+        val viewModel = CharacterListViewModel(getCharacterListUseCase,
+            getFavoritesUseCase,
+            setFavoritesUseCase)
 
         val res = viewModel.characterList.getOrAwaitValue()
 
