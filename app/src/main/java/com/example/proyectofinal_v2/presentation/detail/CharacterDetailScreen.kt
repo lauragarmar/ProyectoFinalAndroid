@@ -1,6 +1,8 @@
 package com.example.proyectofinal_v2.presentation.detail
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -14,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import com.example.proyectofinal_v2.components.ShowError
+import com.example.proyectofinal_v2.presentation.theme.PrimaryGreen
 import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -37,10 +40,13 @@ fun CharacterDetailScreen(
     
     result?.let{ character ->
         Scaffold (
+            Modifier.background(MaterialTheme.colors.onPrimary),
             topBar = {
                 TopAppBar(
+                    backgroundColor = MaterialTheme.colors.onBackground,
                     title={
-                        Text("Detalle de ${character.name}")
+                        Text(text="Detalle de ${character.name}",
+                            color = PrimaryGreen,)
                     },
                     navigationIcon = {
                         IconButton(
@@ -49,7 +55,9 @@ fun CharacterDetailScreen(
                             },
                             onClick = onBack
                         ){
-                            Icon(Icons.Filled.ArrowBack, null)
+                            Icon(tint= PrimaryGreen,
+                                imageVector = Icons.Filled.ArrowBack,
+                                contentDescription = "Flecha atrás")
                         }
                     }
                 )
