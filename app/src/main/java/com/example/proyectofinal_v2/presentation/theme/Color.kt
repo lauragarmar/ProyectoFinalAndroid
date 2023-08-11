@@ -2,11 +2,13 @@ package com.example.proyectofinal_v2.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val PrimaryGreen = Color(0xff5cad4a)
+val SecondaryGreen = Color(0xff208d45)
+val White = Color(0xfff0f2eb)
+val LightGreen= Color(0xffa7cb54)
+val Black = Color(0xff0d0d0d)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+
+
+
 

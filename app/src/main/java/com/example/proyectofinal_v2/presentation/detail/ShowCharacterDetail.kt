@@ -1,5 +1,6 @@
 package com.example.proyectofinal_v2.presentation.detail
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Column
@@ -8,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -19,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -30,6 +34,9 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.proyectofinal_v2.components.StarComponent
 import com.example.proyectofinal_v2.domain.model.CharacterModel
+import com.example.proyectofinal_v2.presentation.theme.globalElevation
+import com.example.proyectofinal_v2.presentation.theme.globalPadding
+import com.example.proyectofinal_v2.presentation.theme.globalRoundedCornerShape
 
 @Composable
 fun ShowCharacterDetail(
@@ -38,62 +45,72 @@ fun ShowCharacterDetail(
     var starred by rememberSaveable {
         mutableStateOf(false)
     }
-
-    Row(
-        modifier = Modifier
-            .padding(8.dp)
-            .fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
+    Card(
+        //modifier = Modifier.padding(globalPadding),
+        //elevation = globalElevation,
+        //shape = RoundedCornerShape(globalRoundedCornerShape)
     ) {
-        AsyncImage(
-            modifier = Modifier
-                .size(100.dp)
-                .clip(CircleShape)
-                .focusRequester(focusRequester = FocusRequester())
-                .focusable(),
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(character.image)
-                .build(),
-            contentDescription = "Imagen de personaje ${character.name}"
-        )
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment =Alignment.CenterVertically
-        ){
-            Column(
-                modifier= Modifier.weight(1f),
-                horizontalAlignment= Alignment.CenterHorizontally
-            ){
-                Text(
-                    text= character.name,
-                    maxLines=1,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = character.gender,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = character.status,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = "Localization: ${character.location}" ,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-                Text(
-                    text = "Origin: ${character.origin}",
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxWidth()
+                .background(color = Color.Gray),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            AsyncImage(
+                modifier = Modifier
+                    .size(100.dp)
+                   // .clip(CircleShape)
+                    .focusRequester(focusRequester = FocusRequester())
+                    .focusable()
+                    .padding(10.dp),
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(character.image)
+                    .build(),
+                contentDescription = "Imagen de personaje ${character.name}"
+            )
 
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Column(
+                    modifier = Modifier.weight(1f)
+                        .padding(15.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = character.name,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+
+                    )
+                    Text(
+                        text = character.gender,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Text(
+                        text = character.status,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Text(
+                        text = "Localization: ${character.location}",
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Text(
+                        text = "Origin: ${character.origin}",
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+
+                }
             }
-        }
 
+        }
     }
 }
 
