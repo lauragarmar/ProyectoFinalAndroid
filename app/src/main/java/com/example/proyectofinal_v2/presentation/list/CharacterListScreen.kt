@@ -29,6 +29,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
@@ -66,10 +68,12 @@ fun CharacterListScreen(
             bottomBar = {
                 SearchCharacterBar(
                     value = searchText,
-                    onValueChange = { newText -> searchText = newText
-                        .replace("\n", "")
-                        .replace("\r", "") },
-                    onSearchExecute = { searchText = ""}
+                    onValueChange = { newText ->
+                        searchText = newText
+                            .replace("\n", "")
+                            .replace("\r", "")
+                    },
+                    onSearchExecute = { searchText = "" }
                 )
             },
             topBar = {
@@ -81,15 +85,16 @@ fun CharacterListScreen(
                     CompositionLocalProvider(
                         LocalContentAlpha provides ContentAlpha.high
                     ) {
-                        IconButton(onClick = { characterListViewModel.getData() },
+                        IconButton(
+                            onClick = { characterListViewModel.getData() },
                             modifier = Modifier
                                 .semantics {
                                     contentDescription = "Botón atrás para volver al listado"
                                 },
 
-                        ) {
+                            ) {
                             Icon(
-                                tint=PrimaryGreen,
+                                tint = PrimaryGreen,
                                 imageVector = Icons.Filled.ArrowBack,
                                 contentDescription = "Flecha atrás"
                             )
@@ -113,7 +118,7 @@ fun CharacterListScreen(
                         characterListViewModel.getFavoriteData()
                     }) {
                         Icon(
-                            tint=PrimaryGreen,
+                            tint = PrimaryGreen,
                             imageVector = Icons.Filled.Star,
                             contentDescription = "Favoritos"
 
@@ -127,24 +132,34 @@ fun CharacterListScreen(
                 columns = GridCells.Fixed(2),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
-                modifier = Modifier.padding(top= 70.dp)
-            ) {
-                val characterList = state.value.orEmpty()
-                    .filter { it.name.contains(searchText.lowercase(), ignoreCase = true) }
-                Log.d("searchbar", "searchText = $searchText, characterList = $characterList")
-                items(characterList.size) { i ->
+                modifier = Modifier
+                    .padding(top = 70.dp)
+                     ){
+                            val characterList = state.value
+                                .orEmpty()
+                                .filter {
+                                    it.name.contains(
+                                        searchText.lowercase(),
+                                        ignoreCase = true
+                                    )
+                                }
+                            Log.d(
+                                "searchbar",
+                                "searchText = $searchText, characterList = $characterList"
+                            )
+                            items(characterList.size) { i ->
 
-                    val item = characterList[i]
-                    item.let { character ->
-                        ShowCharacterList(
-                            character = character,
-                            characterListViewModel = characterListViewModel
-                        ) {
-                            onItemClick.invoke(character.id)
+                                val item = characterList[i]
+                                item.let { character ->
+                                    ShowCharacterList(
+                                        character = character,
+                                        characterListViewModel = characterListViewModel
+                                    ) {
+                                        onItemClick.invoke(character.id)
+                                    }
+                                }
+                            }
                         }
-                    }
-                }
-            }
         }
     } else {
 

@@ -1,6 +1,7 @@
 package com.example.proyectofinal_v2.presentation.list
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,6 +26,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.proyectofinal_v2.components.StarComponent
 import com.example.proyectofinal_v2.domain.model.CharacterModel
+import com.example.proyectofinal_v2.presentation.theme.PrimaryGreen
 
 
 @SuppressLint("SuspiciousIndentation")
@@ -39,7 +42,8 @@ fun ShowCharacterList(
 
     Card(
         modifier = Modifier.padding(10.dp)
-            .size(220.dp),
+            .size(220.dp)
+            ,
 
         shape = RoundedCornerShape(10.dp)
     ) {
@@ -47,6 +51,7 @@ fun ShowCharacterList(
             modifier = Modifier
                 .padding(10.dp)
                 .fillMaxWidth()
+
                 .clickable { onClick.invoke() },
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
